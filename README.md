@@ -1,4 +1,4 @@
-#The Doctor
+# The Doctor
 The Doctor is a web application that uses machine learning models to perform medical diagnoses. The application currently includes four models for examining breast cancer, diabetes, heart disease, and Parkinson's disease.
 
 How to Use
