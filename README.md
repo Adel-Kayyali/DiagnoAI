@@ -24,9 +24,6 @@ The Doctor uses the following machine learning models to perform medical diagnos
 **Heart Examination:** Random Forest Classifier model trained on the Cleveland Heart Disease Dataset.
 **Parkinsons Examination:** Random Forest Classifier model trained on the Parkinson's Disease Dataset.
 
-### Contributors
-The Doctor was created by Adool Kayyali.
-
 ### Date
 6 / 22 / 2022
 
