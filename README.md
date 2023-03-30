@@ -9,12 +9,12 @@ To use the application, simply select the type of examination you wish to perfor
 ### Dependencies
 The Doctor was built using **Python 3.8** and the following libraries:
 
-*Streamlit
-*Pickle
-*Streamlit-Option-Menu
-*Scikit-Learn
-*Pandas
-*Numpy
+* Streamlit
+* Pickle
+* Streamlit-Option-Menu
+* Scikit-Learn
+* Pandas
+* Numpy
 
 ### Models Used
 The Doctor uses the following machine learning models to perform medical diagnoses:
