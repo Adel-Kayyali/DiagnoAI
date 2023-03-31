@@ -1,0 +1,1 @@
+streamlit run "C:\Users\adool\OneDrive\سطح المكتب\DiagnoAI\main.py"
