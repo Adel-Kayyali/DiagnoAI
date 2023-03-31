@@ -25,6 +25,6 @@ The Doctor uses the following machine learning models to perform medical diagnos
 **Parkinsons Examination:** Random Forest Classifier model trained on the Parkinson's Disease Dataset.
 
 ### Date
-6 / 22 / 2022
+3 / 28 / 2023
 
-© Adel Kayyali 2023
+© Adel Kayyali
