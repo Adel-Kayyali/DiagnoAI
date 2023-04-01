@@ -12,10 +12,10 @@ st.set_page_config(
 
 
 #Loading the Models
-BreastCancerModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/BreastCancer_Model.sav','rb'))
-DiabetesModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/diabetes_model.sav','rb'))
-HeartModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/heart_disease_model.sav','rb'))
-ParkinsonsModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/parkinsons.sav','rb'))
+BreastCancerModel=pickle.load(open('BreastCancer_Model.sav','rb'))
+DiabetesModel=pickle.load(open('diabetes_model.sav','rb'))
+HeartModel=pickle.load(open('heart_disease_model.sav','rb'))
+ParkinsonsModel=pickle.load(open('parkinsons.sav','rb'))
 
 
 #Option Menu - Sidebar
