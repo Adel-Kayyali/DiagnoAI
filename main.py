@@ -1,6 +1,7 @@
 import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
+import joblib
 
 
 #Page Configs
@@ -11,10 +12,10 @@ st.set_page_config(
 
 
 #Loading the Models
-BreastCancerModel=pickle.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/BreastCancer_Model.sav','rb'))
-DiabetesModel=pickle.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/diabetes_model.sav','rb'))
-HeartModel=pickle.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/heart_disease_model.sav','rb'))
-ParkinsonsModel=pickle.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/parkinsons.sav','rb'))
+BreastCancerModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/BreastCancer_Model.sav','rb'))
+DiabetesModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/diabetes_model.sav','rb'))
+HeartModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/heart_disease_model.sav','rb'))
+ParkinsonsModel=joblib.load(open('https://github.com/Adel-Kayyali/DiagnoAI/blob/main/Models/parkinsons.sav','rb'))
 
 
 #Option Menu - Sidebar
