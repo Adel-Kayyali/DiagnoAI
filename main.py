@@ -12,10 +12,10 @@ st.set_page_config(
 
 
 #Loading the Models
-BreastCancerModel=pickle.load(open('BreastCancer_Model.sav','rb'))
-DiabetesModel=pickle.load(open('diabetes_model.sav','rb'))
-HeartModel=pickle.load(open('heart_disease_model.sav','rb'))
-ParkinsonsModel=pickle.load(open('parkinsons.sav','rb'))
+BreastCancerModel=joblib.load(open('BreastCancer_Model.sav','rb'))
+DiabetesModel=joblib.load(open('diabetes_model.sav','rb'))
+HeartModel=joblib.load(open('heart_disease_model.sav','rb'))
+ParkinsonsModel=joblib.load(open('parkinsons.sav','rb'))
 
 
 #Option Menu - Sidebar
