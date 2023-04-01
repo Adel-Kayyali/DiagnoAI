@@ -6,8 +6,8 @@ import joblib
 
 #Page Configs
 st.set_page_config(
-    page_title="🩺 DiagnoAI",
-    page_icon="activity",
+    page_title="DiagnoAI",
+    page_icon="🩺",
 )
 
 
