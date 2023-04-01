@@ -17,6 +17,12 @@ To use the application, simply select the type of examination you wish to perfor
 * Numpy
 * Joblib
 
+### Installation
+1- Clone the repository: git clone https://github.com/Adel-Kayyali/DiagnoAI.git
+2- Install the required packages: pip install -r requirements.txt
+3- Run the application: python app.py
+**Note:** The application requires Python 3.7 or higher.
+
 ### Models Used
 [DiagnoAI](https://diagnoai.herokuapp.com) uses the following machine learning models to perform medical diagnoses:
 
