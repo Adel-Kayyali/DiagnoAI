@@ -106,7 +106,7 @@ if (Menu == 'Diabetes App'):
     Pregnancies=c1.text_input('Pregnancies')
     Glucose=c2.text_input('Glucose Level')
     BloodPressure=c1.text_input('Blood Pressure Value (mm Hg)')
-    SkinThickness=c2.text_input('Skin Thickness)')
+    SkinThickness=c2.text_input('Skin Thickness')
     Insulin=c1.text_input('Insulin Level (mu U/ml)')
     BMI=c2.text_input('BMI Value')
     DiabetesPedigreeFunction=c1.text_input('Diabetes pedigree function Value')
