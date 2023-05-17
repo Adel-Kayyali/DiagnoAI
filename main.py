@@ -7,7 +7,7 @@ import database as db
 
 #Page Configs
 page_title="DiagnoAI"
-page_icon=":stethoscope:"
+page_icon="🩺"
 
 st.set_page_config(
     page_title=page_title,
