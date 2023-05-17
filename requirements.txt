@@ -5,3 +5,5 @@ streamlit-option-menu==0.3.2
 scikit-learn==1.0.1
 protobuf==3.20.1
 joblib==1.2.0
+deta==1.1.0
+databases==0.7.0
