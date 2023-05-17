@@ -50,7 +50,7 @@ hide_st_style= """
         """    
 st.markdown(hide_st_style, unsafe_allow_html=True)
     
-
+"""
 #Breast Cancer Page
 if (Menu == 'Breast Cancer App'):
     st.title('Breast Cancer App')
@@ -86,6 +86,51 @@ if (Menu == 'Breast Cancer App'):
            breastCancer_resault='The Tumor is Benign.'
 
     st.success(breastCancer_resault)
+"""
+
+
+#Breast Cancer Page
+if (Menu == 'Breast Cancer App'):
+    st.title('Breast Cancer App')
+    
+    st.markdown('''---''')
+    st.markdown('''### This app classifies breast tumors as either malignant or benign.''')
+    st.markdown('''Please note that only **Numeric Inputs** are accepted. Kindly, ensure that your input is only numbers.''')
+
+
+    # Create a form
+    with st.form("entry_form", clear_on_submit=True):
+
+        # Get the values of the input fields
+        mean_radius = st.text_input("Radius Mean")
+        mean_perimeter = st.text_input("Perimeter Mean")
+        mean_area = st.text_input("Area Mean")
+        mean_concavity = st.text_input("Concavity Mean")
+        mean_concave_points = st.text_input("Concave Points Mean")
+        worst_radius = st.text_input("Worst Radius")
+        worst_perimeter = st.text_input("Worst Perimeter")
+        worst_area = st.text_input("Worst Area")
+        worst_concavity = st.text_input("Worst Concavity")
+        worst_concave_points = st.text_input("Worst Concave points")
+
+        # Prediction and Data Insertion button
+        if st.form_submit_button('Predict and Save Data'):
+            # Perform breast cancer prediction
+            breastCancer_pred = BreastCancerModel.predict([[mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points]])
+
+            if breastCancer_pred[0] == 1:
+                breastCancer_result = 'The Tumor is Malignant.'
+            else:
+                breastCancer_result = 'The Tumor is Benign.'
+
+            # Save the data to the database
+            db.insert_data(mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points)
+
+            # Display prediction result and success message
+            st.success(breastCancer_result)
+            st.success("Data Saved!")
+
+
 
 
     st.markdown(
