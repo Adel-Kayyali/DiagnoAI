@@ -50,43 +50,8 @@ hide_st_style= """
         """    
 st.markdown(hide_st_style, unsafe_allow_html=True)
     
-"""
-#Breast Cancer Page
-if (Menu == 'Breast Cancer App'):
-    st.title('Breast Cancer App')
-    
-    st.markdown('''---''')
-    st.markdown('''### This app classifies breast tumors as either malignant or benign.''')
-    st.markdown('''Please note that only **Numeric Inputs** are accepted. Kindly, ensure that your input is only numbers.''')
-
-    #Inputs
-    c1, c2 = st.columns(2)
-    mean_radius=c1.text_input('Radius Mean')
-    mean_perimeter=c2.text_input('Perimeter Mean')
-    mean_area=c1.text_input('Area Mean')
-    mean_concavity=c2.text_input('Concavity Mean')
-    mean_concave_points=c1.text_input('Concave Points Mean')
-    worst_radius=c2.text_input('Worst Radius')
-    worst_perimeter=c1.text_input('Worst Perimeter')
-    worst_area=c2.text_input('Worst Area')
-    worst_concavity=c1.text_input('Worst Concavity')
-    worst_concave_points=c2.text_input('Worst Concave points')
 
 
-    #Breast Cancer Prediction 
-    breastCancer_resault=''
-    if st.button('Breast Cancer Test Resault'):
-        breastCancer_pred = BreastCancerModel.predict([[mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, 
-                                                        worst_area, worst_concavity, worst_concave_points]])
-        
-        if (breastCancer_pred[0] == 1):
-            breastCancer_resault='The Tumor is Malignant.'
-
-        else:
-           breastCancer_resault='The Tumor is Benign.'
-
-    st.success(breastCancer_resault)
-"""
 
 
 #Breast Cancer Page
