@@ -2,13 +2,18 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 import joblib
+import database as db
 
 
 #Page Configs
+page_title="DiagnoAI"
+page_icon=":stethoscope:"
+
 st.set_page_config(
-    page_title="DiagnoAI",
-    page_icon="🩺",
-)
+    page_title=page_title,
+    page_icon=page_icon)
+
+st.title(page_title + " " + page_icon)
 
 
 #Loading the Models
@@ -20,11 +25,30 @@ ParkinsonsModel=joblib.load(open('parkinsons.sav','rb'))
 
 #Option Menu - Sidebar
 with st.sidebar:
+
     Menu = option_menu('DiagnoAI System',
-                       ['Breast Cancer App','Diabetes App','Heart Health App','Parkinsons App'],
+                       options=['Breast Cancer App','Diabetes App','Heart Health App','Parkinsons App'],
                        icons=['gender-female','moisture','activity','person exclamation'],
                        menu_icon='journal-medical',
                        default_index=0)
+
+
+# DataBase Interface
+def get_all_data():
+    items = db.fetch_all_data()
+    data = [item["key"] for item in items]
+    return data
+
+
+#Hide Streamlit Style
+hide_st_style= """
+        <style>
+        #MainMenu {visibility:hidden;}
+        footer {visibility:hidden;}
+        header {visibility:hidden;}
+        </style>
+        """    
+st.markdown(hide_st_style, unsafe_allow_html=True)
     
 
 #Breast Cancer Page
