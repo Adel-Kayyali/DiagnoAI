@@ -12,7 +12,7 @@ db = deta.Base("DiagnoAI_DB")
 def insert_data (user_name, Mean_Radius,Mean_Perimeter,Mean_Area,Mean_Concavity,Mean_Concavity_Points,Worst_Radius,Worst_Perimeter
                 ,Worst_Area,Worst_Concavity,Worst_Concavity_Points):
     """Returns the report on a succesful creation, otherwise raises an error"""
-    return db.put({"Key":user_name, "Mean_Radius":Mean_Radius, "Mean_Perimeter":Mean_Perimeter, "Mean_Area":Mean_Area, "Mean_Concavity":Mean_Concavity,
+    return db.put({"user_name":user_name, "Mean_Radius":Mean_Radius, "Mean_Perimeter":Mean_Perimeter, "Mean_Area":Mean_Area, "Mean_Concavity":Mean_Concavity,
                    "Mean_Concavity_Points":Mean_Concavity_Points, "Worst_Radius":Worst_Radius, "Worst_Perimeter":Worst_Perimeter,
                    "Worst_Area":Worst_Area, "Worst_Concavity":Worst_Concavity, "Worst_Concavity_Points":Worst_Concavity_Points})
 
