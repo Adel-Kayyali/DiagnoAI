@@ -90,7 +90,7 @@ if (Menu == 'Breast Cancer App'):
                 breastCancer_result = 'The Tumor is Benign.'
 
             # Save the data to the database
-            db.insert_data(user_name, mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points)
+            db.insert_data(user_name, mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points, breastCancer_result)
 
             # Display prediction result and success message
             st.success(breastCancer_result)
