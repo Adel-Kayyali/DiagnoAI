@@ -67,6 +67,7 @@ if (Menu == 'Breast Cancer App'):
     with st.form("entry_form", clear_on_submit=True):
 
         # Get the values of the input fields
+        user_name = st.text_input("Enter Your Name")
         mean_radius = st.text_input("Radius Mean")
         mean_perimeter = st.text_input("Perimeter Mean")
         mean_area = st.text_input("Area Mean")
@@ -89,7 +90,7 @@ if (Menu == 'Breast Cancer App'):
                 breastCancer_result = 'The Tumor is Benign.'
 
             # Save the data to the database
-            db.insert_data(mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points)
+            db.insert_data(user_name, mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points)
 
             # Display prediction result and success message
             st.success(breastCancer_result)
