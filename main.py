@@ -90,11 +90,10 @@ if (Menu == 'Breast Cancer App'):
                 breastCancer_result = 'The Tumor is Benign.'
 
             # Save the data to the database
-            db.insert_data(user_name, mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points, breastCancer_result)
+            db.insert_BreastCancer_data(user_name, mean_radius, mean_perimeter, mean_area, mean_concavity, mean_concave_points, worst_radius, worst_perimeter, worst_area, worst_concavity, worst_concave_points, breastCancer_result)
 
             # Display prediction result and success message
             st.success(breastCancer_result)
-            st.success("Data Saved!")
 
 
 
@@ -128,38 +127,41 @@ if (Menu == 'Breast Cancer App'):
 
 
 
-#Diabetes Page
-if (Menu == 'Diabetes App'):
+# Diabetes Page
+if Menu == 'Diabetes App':
     st.title('Diabetes App')
 
     st.markdown('''---''')
     st.markdown('''### This app classifies whether an individual is diabetic or not.''')
     st.markdown('''Please note that only **Numeric Inputs** are accepted. Kindly, ensure that your input is only numbers.''')
 
-    #Inputs
-    c1, c2 = st.columns(2)
-    Pregnancies=c1.text_input('Pregnancies')
-    Glucose=c2.text_input('Glucose Level')
-    BloodPressure=c1.text_input('Blood Pressure Value (mm Hg)')
-    SkinThickness=c2.text_input('Skin Thickness')
-    Insulin=c1.text_input('Insulin Level (mu U/ml)')
-    BMI=c2.text_input('BMI Value')
-    DiabetesPedigreeFunction=c1.text_input('Diabetes pedigree function Value')
-    Age_diabetes=c2.text_input('Age')
+    # Create a form
+    with st.form("diabetes_form", clear_on_submit=True):
+        # Get the values of the input fields
+        user_name = st.text_input("Enter Your Name")
+        Pregnancies = st.text_input('Pregnancies')
+        Glucose = st.text_input('Glucose Level')
+        BloodPressure = st.text_input('Blood Pressure Value (mm Hg)')
+        SkinThickness = st.text_input('Skin Thickness')
+        Insulin = st.text_input('Insulin Level (mu U/ml)')
+        BMI = st.text_input('BMI Value')
+        DiabetesPedigreeFunction = st.text_input('Diabetes pedigree function Value')
+        Age_diabetes = st.text_input('Age')
 
+        # Diabetes Prediction
+        diab_result = ''
+        if st.form_submit_button('Diabetes Test Result'):
+            diab_pred = DiabetesModel.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age_diabetes]])
 
-    #Diabetes Prediction 
-    diab_resault=''
-    if st.button('Diabetes Test Resault'):
-        diab_pred = DiabetesModel.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age_diabetes]])
+            if diab_pred[0] == 1:
+                diab_result = 'This Person is Diabetic'
+            else:
+                diab_result = 'This Person is Not Diabetic'
 
-        if (diab_pred[0]==1):
-            diab_resault = 'This Person is Diabetic'
+            # Save the data to the database
+            db.insert_Diabetes_data(user_name, Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age_diabetes, diab_result)
 
-        else:
-            diab_resault = 'This Person is Not Diabetic'
-
-    st.success(diab_resault)
+        st.success(diab_result)
 
 
     st.markdown(
@@ -190,42 +192,45 @@ if (Menu == 'Diabetes App'):
 
 
 
-#Heart Health App Page
-if (Menu == 'Heart Health App'):
+# Heart Health App Page
+if Menu == 'Heart Health App':
     st.title('Heart Health App')
 
     st.markdown('''---''')
     st.markdown('''### This app classifies whether you have a healthy heart or any heart diseases.''')
     st.markdown('''Please note that only **Numeric Inputs** are accepted. Kindly, ensure that your input is only numbers.''')
 
-    #Inputs
-    c1, c2 = st.columns(2)
-    Age_heart=c1.text_input('Age')
-    gender=c2.text_input('Gender(Male:1, Female:0)')
-    cp=c1.text_input('Chest Pain Degree')
-    trestbps=c2.text_input('Blood Pressure')
-    chol=c1.text_input('Cholestoral (mg/dl)')
-    restecg=c2.text_input('Electrocardiographic')
-    thalach=c1.text_input('Maximum Heart Rate Achieved')
-    exang=c2.text_input('Exercise Induced Angina (1: yes, 0: no)')
-    oldpeak=c1.text_input('ST Depression (induced by exercise relative to rest)')
-    slope=c2.text_input('The Slope of the Peak Exercise ST Segment')
-    ca=c1.text_input('Number of Major Vessels (0-3) colored by Flourosopy')
-    thal=c2.text_input('THAL (1= Normal, 2= Fixed Defect, 3= Reversable Defect)')
+    # Create a form
+    with st.form("heart_health_form", clear_on_submit=True):
+        # Get the values of the input fields
+        user_name = st.text_input("Enter Your Name")
+        Age_heart = st.text_input('Age')
+        gender = st.text_input('Gender(Male:1, Female:0)')
+        cp = st.text_input('Chest Pain Degree')
+        trestbps = st.text_input('Blood Pressure')
+        chol = st.text_input('Cholesterol (mg/dl)')
+        restecg = st.text_input('Electrocardiographic')
+        thalach = st.text_input('Maximum Heart Rate Achieved')
+        exang = st.text_input('Exercise Induced Angina (1: yes, 0: no)')
+        oldpeak = st.text_input('ST Depression (induced by exercise relative to rest)')
+        slope = st.text_input('The Slope of the Peak Exercise ST Segment')
+        ca = st.text_input('Number of Major Vessels (0-3) colored by Flourosopy')
+        thal = st.text_input('THAL (1= Normal, 2= Fixed Defect, 3= Reversible Defect)')
 
+        # Heart Disease Prediction
+        heart_result = ''
+        if st.form_submit_button('Heart Disease Test Result'):
+            heart_pred = HeartModel.predict([[Age_heart, gender, cp, trestbps, chol, restecg, thalach, exang, oldpeak, slope, ca, thal]])
 
-    #Heart Disease Prediction 
-    heart_resault=''
-    if st.button('Heart Disease Test Resault'):
-        heart_pred = HeartModel.predict([[Age_heart, gender, cp, trestbps, chol, restecg, thalach, exang, oldpeak, slope, ca, thal]])
+            if heart_pred[0] == 1:
+                heart_result = 'This Person Has a Heart Disease'
+            else:
+                heart_result = 'This Person Has a Healthy Heart'
 
-        if (heart_pred[0]==1):
-            heart_resault = 'This Person Has a Heart Disease'
-        
-        else :
-            heart_resault = 'This Person Has a Healthy Heart'
+            # Save the data to the database
+            db.insert_HeartHealth_data(user_name, Age_heart, gender, cp, trestbps, chol, restecg, thalach, exang, oldpeak, slope, ca, thal, heart_result)
 
-    st.success(heart_resault)
+        st.success(heart_result)
 
 
     st.markdown(
@@ -260,47 +265,48 @@ if (Menu == 'Heart Health App'):
 
 
 
-#Parkinsons App Page
-if (Menu == 'Parkinsons App'):
+# Parkinsons App Page
+if Menu == 'Parkinsons App':
     st.title('Parkinsons App')
 
     st.markdown('''---''')
     st.markdown('''### This app predicts whether an individual is affected by Parkinson's Disease.''')
     st.markdown('''Please note that only **Numeric Inputs** are accepted. Kindly, ensure that your input is only numbers.''')
 
-    #Inputs
-    c1, c2, c3 = st.columns(3)
-    MDVPfo=c1.text_input('Average vocal Fundamental Frequency')
-    MDVPflo=c2.text_input('Minimum vocal Fundamental Frequency')
-    ppe=c3.text_input('PPE (fundamental frequency variation)')
-    MDVPshimmer=c1.text_input('Shimmer')
-    MDVPShimmerDB=c2.text_input('Shimmer - dB')
-    ShimmerQ3=c3.text_input('Shimmer - APQ3')
-    ShimmerQ5=c1.text_input('Shimmer - APQ5')
-    MDVPapq=c2.text_input('MDVP - APQ')
-    ShimmerDDA=c3.text_input('Shimmer - DDA')
-    HNR=c1.text_input('HNR (ratio of noise to tonal components in the voice)')
-    spread1=c2.text_input('Spread1 (fundamental frequency variation)')
-    spread2=c3.text_input('Spread2 (fundamental frequency variation)')
-    d2=c1.text_input('D2 (Nonlinear Dynamical Complexity)')
-    MDVPjitter=c2.text_input('MDVP:Jitter%')
+    # Create a form
+    with st.form("parkinsons_form", clear_on_submit=True):
+        # Get the values of the input fields
+        user_name = st.text_input("Enter Your Name")
+        MDVPfo = st.text_input('Average vocal Fundamental Frequency')
+        MDVPflo = st.text_input('Minimum vocal Fundamental Frequency')
+        ppe = st.text_input('PPE (fundamental frequency variation)')
+        MDVPshimmer = st.text_input('Shimmer')
+        MDVPShimmerDB = st.text_input('Shimmer - dB')
+        ShimmerQ3 = st.text_input('Shimmer - APQ3')
+        ShimmerQ5 = st.text_input('Shimmer - APQ5')
+        MDVPapq = st.text_input('MDVP - APQ')
+        ShimmerDDA = st.text_input('Shimmer - DDA')
+        HNR = st.text_input('HNR (ratio of noise to tonal components in the voice)')
+        spread1 = st.text_input('Spread1 (fundamental frequency variation)')
+        spread2 = st.text_input('Spread2 (fundamental frequency variation)')
+        d2 = st.text_input('D2 (Nonlinear Dynamical Complexity)')
+        MDVPjitter = st.text_input('MDVP:Jitter%')
 
+        # Parkinson's Disease Prediction
+        parkinsons_result = ''
+        if st.form_submit_button("Parkinson's Test Result"):
+            parkinsons_pred = ParkinsonsModel.predict([[MDVPfo, MDVPflo, MDVPjitter, MDVPshimmer, MDVPShimmerDB, ShimmerQ3, ShimmerQ5, MDVPapq, ShimmerDDA, HNR, spread1,
+                                                        spread2, d2, ppe]])
 
+            if parkinsons_pred[0] == 1:
+                parkinsons_result = "The Result of The Test is Positive. This person is affected by Parkinson's Disease."
+            else:
+                parkinsons_result = "The Result of The Test is Negative. This person is not affected by Parkinson's Disease."
 
-    #Parkinson's Disease Prediction 
-    Parkinson_resault=''
-    if st.button("Parkinson's Test Resault"):
-        parkinsons_pred = ParkinsonsModel.predict([[MDVPfo, MDVPflo, MDVPjitter, MDVPshimmer, MDVPShimmerDB, ShimmerQ3, ShimmerQ5, MDVPapq, ShimmerDDA, HNR, spread1,
-                                                    spread2, d2, ppe]])
+            # Save the data to the database
+            db.insert_Parkinsons_data(user_name, MDVPfo, MDVPflo, MDVPjitter, MDVPshimmer, MDVPShimmerDB, ShimmerQ3, ShimmerQ5, MDVPapq, ShimmerDDA, HNR, spread1, spread2, d2, ppe, parkinsons_result)
 
-        if (parkinsons_pred[0]==1):
-            Parkinson_resault = "The Resault of The Test is Positive, This person is Affected by Parkinson's Disease."
-
-        else :
-            Parkinson_resault = "The Resault of The Test is Negative, This person is not Affected by Parkinson's Disease."
-
-    st.success(Parkinson_resault)
-
+        st.success(parkinsons_result)
 
     st.markdown(
     """
