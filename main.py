@@ -17,10 +17,10 @@ st.title(page_title + " " + page_icon)
 
 
 #Loading the Models
-BreastCancerModel=joblib.load(open('BreastCancer_Model.sav','rb'))
-DiabetesModel=joblib.load(open('diabetes_model.sav','rb'))
-HeartModel=joblib.load(open('heart_disease_model.sav','rb'))
-ParkinsonsModel=joblib.load(open('parkinsons.sav','rb'))
+BreastCancerModel=joblib.load(open('Models/BreastCancer_Model.sav','rb'))
+DiabetesModel=joblib.load(open('Models/diabetes_model.sav','rb'))
+HeartModel=joblib.load(open('Models/heart_disease_model.sav','rb'))
+ParkinsonsModel=joblib.load(open('Models/parkinsons.sav','rb'))
 
 
 #Option Menu - Sidebar
