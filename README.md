@@ -43,7 +43,7 @@ Contributions are welcome! If you have an idea for a new feature or find a bug, 
 
 
 Contact
-If you have any questions or comments, please feel free to reach out to me at [adelkayyali@outlook.com](adelkayyali@outlook.com) or [Linkedin](https://www.linkedin.com/in/adel-kayyali-96b884240/).
+If you have any questions or comments, please feel free to reach out to me at [adelkayyali@outlook.com](adelkayyali@outlook.com) or [Linkedin](https://www.linkedin.com/in/adel-kayyali-082051293/).
 
 
 ### Date
